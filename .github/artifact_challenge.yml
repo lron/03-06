@@ -1,0 +1,22 @@
+name: artifact challenge
+
+on: [push]
+
+env:
+  FILE_NAME: myartifact
+
+jobs:
+  main:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ./${{ env.FILE_NAME }}
+        path: .
+
